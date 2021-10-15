@@ -4,20 +4,18 @@ import jwt from "jsonwebtoken";
 import express from "express";
 import bcrypt from "bcryptjs";
 import nodemailer from "nodemailer";
-import dotenv from "dotenv";
 
 const router = express.Router();
-dotenv.config();
-let transporter = nodemailer.createTransport({
-  host: "smtp.gmail.com",
-  port: 587,
-  ignoreTLS: false,
-  secure: false,
-  auth: {
-    user: "prabapkv007@gmail.com",
-    pass: "1234590032p",
-  },
-});
+var smtpPool = require("nodemailer-smtp-pool");
+let transporter = nodemailer.createTransport(
+  smtpPool({
+    service: "gmail",
+    auth: {
+      user: "prabapkv007@gmail.com",
+      pass: "1234590032p",
+    },
+  })
+);
 
 // get users
 router
