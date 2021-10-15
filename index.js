@@ -8,7 +8,8 @@ const app = express();
 const PORT = process.env.PORT || 4000;
 dotenv.config();
 
-const url = "mongodb://localhost/Passreset";
+const url =
+  "mongodb+srv://prabakaranpkv:<password>@cluster0.mc702.mongodb.net/Passreset?retryWrites=true&w=majority";
 app.use(express.json());
 app.use(cors());
 
