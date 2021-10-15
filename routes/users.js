@@ -14,8 +14,8 @@ let transporter = nodemailer.createTransport({
   ignoreTLS: false,
   secure: false,
   auth: {
-    user: process.env.EMAIL_ID,
-    pass: process.env.PASS_WORD,
+    user: "prabapkv007@gmail.com",
+    pass: "1234590032p",
   },
 });
 
