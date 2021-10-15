@@ -125,7 +125,7 @@ router.route("/verify").get(async (request, response) => {
       const { id } = jwt.verify(token, "MySecretKey");
       await Users.updateOne({ _id: id }, { confirm: true });
       response.send("Your Account is Activated");
-      response.redirect(`https://gallant-visvesvaraya-d2af78.netlify.app/`);
+      response.redirect(`https://password-reset-front.netlify.app/`);
     } else {
       response.status(401).json({ message: "Invalid Token" });
     }
@@ -188,7 +188,7 @@ router.route("/forgot-password").post(async (request, response) => {
         to: `${user.email}`,
         subject: "Password reset",
         html: `<h4>Your request for password reset has been accepted</h4><br/><p> To reset your password,
-        <a href="https://gallant-visvesvaraya-d2af78.netlify.app/reset-password/${token}">click here </a>, `,
+        <a href="https://password-reset-front.netlify.app/reset-password/${token}">click here </a>, `,
       });
       console.log("Forgotmail is", ForgotMail);
       if (ForgotMail.accepted.length > 0) {
@@ -223,7 +223,7 @@ router.route("/reset-password").post(async (request, response) => {
     }
     console.log("updated User by Token", usersList);
     response.send({ message: "passwaord changed successfully", usersList });
-    response.redirect("https://gallant-visvesvaraya-d2af78.netlify.app/login");
+    response.redirect("https://password-reset-front.netlify.app/login");
   } catch (err) {
     response.send(err);
     console.log(err);
