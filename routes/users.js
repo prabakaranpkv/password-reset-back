@@ -7,10 +7,13 @@ import nodemailer from "nodemailer";
 
 const router = express.Router();
 let transporter = nodemailer.createTransport({
-  service: "gmail",
+  host: "smtp.gmail.com",
+  port: 587,
+  ignoreTLS: false,
+  secure: false,
   auth: {
-    user: "prabapkv007@gmail.com",
-    pass: "112233Pk",
+    user: process.env.EMAIL_ID,
+    pass: process.env.PASS_WORD,
   },
 });
 
