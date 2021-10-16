@@ -95,7 +95,7 @@ router.route("/signup").post(async (request, response) => {
       console.log("token-->", token);
       console.log(newUser);
       let mail = await transporter.sendMail({
-        from: "prabapkv007@gmail.com",
+        from: process.env.EMAIL_ID,
         to: `${newUser.email}`,
         subject: " signup confirmation Mail",
         html: `<h1>Hi ${newUser.firstName} ${newUser.lastName},</h1><br/><h2>Welcome to PK Insitute</h2><p>
@@ -184,7 +184,7 @@ router.route("/forgot-password").post(async (request, response) => {
       await user.save();
       console.log("mail is going to be sent");
       let ForgotMail = await transporter.sendMail({
-        from: "prabapkv007@gmail.com",
+        from: process.env.EMAIL_ID,
         to: `${user.email}`,
         subject: "Password reset",
         html: `<h4>Your request for password reset has been accepted</h4><br/><p> To reset your password,
